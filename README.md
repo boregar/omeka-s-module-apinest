@@ -2,6 +2,10 @@
 
 When you request an item from the Omeka S APIs, the linked data contained in the JSON-LD response require additional queries to be retrieved. This module allows you to get them nested directly into the initial response.
 
+Current version: v0.1.3
+
+This module is still under active development. It is recommended to wait for the v1.0 release before using it on a production environment.
+
 ## Installation
 
 See general end user documentation for [Installing a module](http://omeka.org/s/docs/user-manual/modules/#installing-modules)
