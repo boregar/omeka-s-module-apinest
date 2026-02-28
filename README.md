@@ -2,7 +2,7 @@
 
 When you request an item from the Omeka S APIs, the linked data contained in the JSON-LD response require additional queries to be retrieved. This module allows you to get them nested directly into the initial response.
 
-Current version: v0.1.3
+Current version: v0.1.4
 
 This module is still under active development. It is recommended to wait for the v1.0 release before using it on a production environment.
 
@@ -45,11 +45,16 @@ The operating procedures for both APIs are detailed below.
 ### Using the REST API
 
 Add the parameters to your request:
+- requesting a unique item:
 ```
 https://my.web.site/api/items/1234?nest=o:owner,o:resource_class,o:resource_template,o:primary_media
 ```
+- requesting items using a search query:
+```
+https://my.web.site/api/items?item_set_id=917&per_page=1000&nest=o:primary_media
+```
 
-The response will embed the requested keys (see example below).
+The linked data will be nested in the response tree of each item (see example below).
 
 ### Using the PHP API
 

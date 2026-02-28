@@ -65,9 +65,9 @@ class Module extends AbstractModule {
     $logger = $services->get('Omeka\Logger');
     // get the module settings
     $settings = $services->get('Omeka\Settings');
-    // check if the current API request is allowed
+    // check if the current API is allowed
     $allowedAPIs = $settings->get('apinest_allowed_apis');
-    $currentAPI = preg_match('/^\/api\/items\/.+/', $_SERVER['REQUEST_URI']) ? 'REST' : 'PHP';
+    $currentAPI = preg_match('/^\/api\/items[\?|\/].+$/', $_SERVER['REQUEST_URI']) ? 'REST' : 'PHP';
     if ((gettype($allowedAPIs) !== 'array') || !in_array($currentAPI, $allowedAPIs)) {
       $logger->notice(sprintf('APINest: requesting the %s API is not allowed (%s)', $currentAPI, $_SERVER['REQUEST_URI']));
       return;
